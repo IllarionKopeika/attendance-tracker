@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "pages#home"
+
+  # sessions
+  resource :session, only: :create
+  get "login", to: "sessions#new", as: "login"
+  delete "logout", to: "sessions#destroy", as: "logout"
 end
