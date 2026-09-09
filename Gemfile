@@ -15,7 +15,16 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# gem "jbuilder"
+
+gem "openssl", ">= 3.3.1"
+gem "json", "< 3.0"
+
+gem "sassc-rails"
+
+gem "bootstrap", "~> 5.3.3"
+
+gem "font-awesome-sass", "~> 6.1"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
