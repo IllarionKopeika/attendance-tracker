@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def new
     if authenticated?
-      flash[:warning] = "已登录的"
+      flash[:info] = "已登录的"
       redirect_to root_path
     end
   end
