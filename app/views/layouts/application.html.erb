@@ -24,17 +24,11 @@
   </head>
 
   <body>
-    <%#= render "shared/navbar" %>
-    <div class="container my-3">
+    <div class="mb-3">
+      <%= render "shared/navbar" %>
+    </div>
+    <div class="container my-5">
       <%= render "shared/flash_message" %>
-      <!--
-      <p class="text-center d-block d-sm-none">xs</p>
-      <p class="text-center d-none d-sm-block d-md-none">sm</p>
-      <p class="text-center d-none d-md-block d-lg-none">md</p>
-      <p class="text-center d-none d-lg-block d-xl-none">lg</p>
-      <p class="text-center d-none d-xl-block d-xxl-none">xl</p>
-      <p class="text-center d-none d-xxl-block">xxl</p>
-      -->
       <%= yield %>
     </div>
   </body>
