@@ -18,7 +18,7 @@ gem "stimulus-rails"
 # gem "jbuilder"
 
 gem "openssl", ">= 3.3.1"
-gem "json", "< 3.0"
+gem "json", "< 4.0"
 
 gem "sassc-rails"
 
