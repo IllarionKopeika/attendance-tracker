@@ -1,23 +1,26 @@
 <div class="container-fluid custom-navbar mb-5">
   <% if authenticated? %>
     <div class="d-flex justify-content-between align-items-center">
-      <h5 class="text-center text-primary ms-1 my-0">你好，<%= Current.user.name %>！</h5>
+      <h4 class="text-center text-primary ms-1 my-0">你好，<%= Current.user.name %>！</h4>
       <i class="fa-solid fa-bars fa-xl me-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header d-flex justify-content-between align-items-center">
-          <h5 class="text-center text-dark ms-1 my-0">你好，<%= Current.user.name %>！</h5>
+          <h4 class="text-center text-primary ms-1 my-0">你好，<%= Current.user.name %>！</h4>
           <i class="fa-solid fa-xmark fa-xl text-dark me-1" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></i>
         </div>
         <div class="offcanvas-body d-flex flex-column justify-content-center p-5">
-          <p class="text-center">学生</p>
-          <p class="text-center">班级</p>
+          <%= link_to "首页", root_path, class: "text-center mb-2" %>
+          <%= link_to "学生", "#", class: "text-center mb-2" %>
+          <%= link_to "班级", "#", class: "text-center mb-2" %>
           <%= link_to "退出", logout_path, data: { turbo_method: :delete }, class: "btn btn-secondary text-white" %>
         </div>
       </div>
+    </div>
+
 
   <% else %>
-    <h5 class="text-center text-primary m-0">欢迎光临</h5>
+    <h4 class="text-center text-primary m-0">欢迎光临</h4>
   <% end %>
 
 </div>

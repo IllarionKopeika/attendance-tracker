@@ -1,0 +1,21 @@
+.custom-index {
+  background: rgba(white,0.7);
+  border: 1px solid $secondary;
+  border-radius: 20px;
+  margin-top: 4px;
+  .table {
+    th {
+      font-size: 16px;
+      font-weight: 700;
+      color: $dark;
+    }
+    td {
+      font-size: 14px;
+      font-weight: 500;
+      color: $dark;
+    }
+    .table-group-divider {
+      color: $light;
+    }
+  }
+}

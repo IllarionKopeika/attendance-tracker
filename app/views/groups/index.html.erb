@@ -1,0 +1,26 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-index p-3">
+
+      <h1 class="text-center text-primary mb-3">班级列表</h1>
+
+      <table class="table table-secondary table-striped text-center">
+        <thead>
+          <tr>
+            <th scope="col">班级名称</th>
+            <th scope="col">学生数量</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @groups.each do |group| %>
+            <tr>
+              <td scope="row"><%= group.name %></td>
+              <td scope="row"><%= group.students.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
