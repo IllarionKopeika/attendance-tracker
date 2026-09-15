@@ -1,4 +1,7 @@
 en:
+  sexes:
+    male: 男
+    female: 女
   errors:
     format: "%{message}"
   activerecord:
@@ -6,12 +9,25 @@ en:
       student: 学生
       group: 班级
     attributes:
+      student:
+        name: 姓名
+        sex: 性别
+        paid_lessons: 课数
+        groups: 班级
       group:
-        name: 班级名称
+        name: 名称
     errors:
       models:
+        student:
+          attributes:
+            name:
+              blank: "没填新生的%{attribute}"
+            sex:
+              blank: "没选新生的%{attribute}"
+            groups:
+              blank: "至少选一个%{attribute}"
         group:
           attributes:
             name:
-              blank: "没填%{attribute}"
-              taken: "该%{attribute}已存在"
+              blank: "没填班级%{attribute}"
+              taken: "该班级%{attribute}已存在"

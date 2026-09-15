@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   resources :groups, only: [ :index, :show, :new, :create ]
 
   # students
-  resources :groups, only: [ :index, :show, :new, :create, :edit, :update ]
+  resources :students, only: [ :index, :show, :new, :create, :edit, :update ]
 end

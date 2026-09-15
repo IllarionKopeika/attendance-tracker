@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center text-primary mb-2">新生</h1>
+
+      <%= render "shared/errors", object: @student %>
+
+      <%= form_with model: @student do |f| %>
+        <div class="mb-2">
+          <%= f.text_field :name, placeholder: "姓名", class: "form-control" %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.select :sex, [ [ "男", "male" ], [ "女", "female" ] ], { prompt: "性别" }, class: "form-select" %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.number_field :paid_lessons, in: 1..99999, step: 1, placeholder: "课数", class: "form-control" %>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label d-flex justify-content-center text-primary">班级</label>
+          <div class="group-checkboxes d-flex justify-content-evenly">
+            <%= f.collection_check_boxes :group_ids, Group.order(:name), :id, :name do |group| %>
+              <div class="group-check">
+                <%= group.check_box(class: "btn-check") %>
+                <%= group.label(class: "btn btn-outline-secondary btn-sm rounded-pill") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <%= f.submit "提交", class: "btn btn-primary w-100 mb-2" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

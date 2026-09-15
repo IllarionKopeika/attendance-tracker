@@ -2,13 +2,13 @@
   <div class="col">
     <div class="custom-form p-3">
 
-      <h1 class="text-center text-primary mb-2">创建班级</h1>
+      <h1 class="text-center text-primary mb-2">新班级</h1>
 
       <%= render "shared/errors", object: @group %>
 
       <%= form_with model: @group do |f| %>
         <div class="mb-2">
-          <%= f.text_field :name, placeholder: "班级名称", class: "form-control" %>
+          <%= f.text_field :name, placeholder: "名称", class: "form-control" %>
         </div>
 
         <%= f.submit "提交", class: "btn btn-primary w-100 mb-2" %>

@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:success] = "创建成功"
+      flash[:success] = "成功"
       redirect_to root_path
     else
       render "new", status: :unprocessable_entity

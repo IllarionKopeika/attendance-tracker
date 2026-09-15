@@ -16,11 +16,42 @@
       color: $secondary;
       font-weight: 700;
     }
-    &:focus {
+  }
+  .form-select {
+    width: 100%;
+    border: 1px solid $secondary;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $primary;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    &:has(option[value=""]:checked) {
+      color: $secondary;
+    }
+    option {
+      color: $primary;
+    }
+  }
+  label {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .group-check {
+    .btn-check:checked + .btn-outline-secondary {
       border-color: $primary;
-      box-shadow: 0 0 0 3px rgba($primary, 0.1);
+      color: $primary;
       background: white;
-      outline: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn-outline-secondary {
+      border-color: $secondary;
+      color: $secondary;
+      background: white;
+      font-weight: 700;
+      font-size: 14px;
     }
   }
   .btn-primary {

@@ -1,0 +1,28 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center text-primary mb-3">学生列表</h1>
+
+      <table class="table table-secondary table-striped text-center custom-table">
+        <thead>
+          <tr>
+            <th scope="col">姓名</th>
+            <th scope="col">性别</th>
+            <th scope="col">课数</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @students.each do |student| %>
+            <tr>
+              <td scope="row"><%= student.name %></td>
+              <td scope="row"><%= t("sexes.#{student.sex}") %></td>
+              <td scope="row"><%= student.paid_lessons %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

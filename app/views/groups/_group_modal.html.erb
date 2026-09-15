@@ -1,0 +1,33 @@
+<% @groups.each do |group| %>
+  <div class="modal fade" id="group-modal-<%= group.id %>" tabindex="-1" aria-labelledby="groupModal<%= group.id %>Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h4 class="modal-title text-primary" id="groupModal<%= group.id %>Label"><%= group.name %></h4>
+          <i type="button" class="fa-solid fa-xmark fa-xl text-primary" data-bs-dismiss="modal" aria-label="Close"></i>
+        </div>
+        <div class="modal-body">
+          <table class="table table-secondary table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">姓名</th>
+                <th scope="col">性别</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <% group.students.each do |student| %>
+                <tr>
+                  <td scope="row"><%= student.name %></td>
+                  <td scope="row"><%= t("sexes.#{student.sex}") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <h6>一共：<strong><%= group.students.count %></strong>个学生</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
