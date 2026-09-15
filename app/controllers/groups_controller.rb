@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all.order(created_at: :desc)
+    @groups = Group.order(created_at: :desc).includes(:students)
   end
   def new
     @group = Group.new

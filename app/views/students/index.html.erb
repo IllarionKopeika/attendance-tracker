@@ -16,7 +16,13 @@
           <% @students.each do |student| %>
             <tr>
               <td scope="row"><%= student.name %></td>
-              <td scope="row"><%= t("sexes.#{student.sex}") %></td>
+              <td scope="row">
+                <% if student.male? %>
+                  <span class="badge rounded-pill text-bg-dark"><%= t("sexes.#{student.sex}") %></span>
+                <% else %>
+                  <span class="badge rounded-pill text-bg-secondary text-white"><%= t("sexes.#{student.sex}") %></span>
+                <% end %>
+              </td>
               <td scope="row"><%= student.paid_lessons %></td>
             </tr>
           <% end %>
