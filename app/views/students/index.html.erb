@@ -4,30 +4,54 @@
 
       <h1 class="text-center text-primary mb-3">学生列表</h1>
 
-      <table class="table table-secondary table-striped text-center custom-table">
-        <thead>
-          <tr>
-            <th scope="col">姓名</th>
-            <th scope="col">性别</th>
-            <th scope="col">课数</th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <% @students.each do |student| %>
+      <%= search_form_for @q, data: { turbo_frame: "results", turbo_action: "advance", controller: "filters", filters_target: "form" } do |f| %>
+        <div class="row mb-2">
+          <div class="col">
+            <%= f.search_field :name_cont, placeholder: "学生姓名", class: "form-control", oninput: "this.form.requestSubmit()" %>
+          </div>
+          <div class="col">
+            <%= f.collection_select :groups_name_eq, Group.all.map { |g| [ g.name, g.name ] }, :second, :first, { prompt: "班级名称" }, placeholder: "班级名称", class: "form-select", oninput: "this.form.requestSubmit()" %>
+          </div>
+        </div>
+
+        <%= f.submit "搜索", class: "btn btn-primary w-100 mb-2 d-none" %>
+
+        <div class="d-flex justify-content-center mb-2">
+          <div class="col-4">
+            <button type="button" class="btn btn-primary text-white w-100" data-action="filters#reset">清除筛选</button>
+          </div>
+        </div>
+
+      <% end %>
+
+      <%= turbo_frame_tag "results", data: { turbo_action: "advance" } do %>
+        <table class="table table-secondary table-striped text-center custom-table">
+          <thead>
             <tr>
-              <td scope="row"><%= student.name %></td>
-              <td scope="row">
-                <% if student.male? %>
-                  <span class="badge rounded-pill text-bg-dark"><%= t("sexes.#{student.sex}") %></span>
-                <% else %>
-                  <span class="badge rounded-pill text-bg-secondary text-white"><%= t("sexes.#{student.sex}") %></span>
-                <% end %>
-              </td>
-              <td scope="row"><%= student.paid_lessons %></td>
+              <th scope="col">姓名</th>
+              <th scope="col">性别</th>
+              <th scope="col">课数</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="table-group-divider">
+            <% @students.each do |student| %>
+              <tr>
+                <td scope="row"><%= student.name %></td>
+                <td scope="row">
+                  <% if student.male? %>
+                    <span class="badge rounded-pill text-bg-dark"><%= t("sexes.#{student.sex}") %></span>
+                  <% else %>
+                    <span class="badge rounded-pill text-bg-secondary text-white"><%= t("sexes.#{student.sex}") %></span>
+                  <% end %>
+                </td>
+                <td scope="row"><%= student.paid_lessons %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <h6 class="text-center">找到了<strong><%= @students.size %></strong>个学生</h6>
+      <% end %>
 
     </div>
   </div>

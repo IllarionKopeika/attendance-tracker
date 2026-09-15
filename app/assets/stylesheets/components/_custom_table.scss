@@ -3,6 +3,12 @@
     font-size: 16px;
     font-weight: 700;
     color: $dark;
+    a {
+      font-size: 16px;
+      font-weight: 700;
+      color: $dark;
+      text-decoration: none;
+    }
   }
   td {
     font-size: 14px;
