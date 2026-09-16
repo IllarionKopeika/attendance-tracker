@@ -10,17 +10,14 @@
             <%= f.search_field :name_cont, placeholder: "学生姓名", class: "form-control", oninput: "this.form.requestSubmit()" %>
           </div>
           <div class="col">
-            <%= f.collection_select :groups_name_eq, Group.all.map { |g| [ g.name, g.name ] }, :second, :first, { prompt: "班级名称" }, placeholder: "班级名称", class: "form-select", oninput: "this.form.requestSubmit()" %>
+            <%= f.collection_select :groups_name_eq, Group.all.map { |group| [ group.name, group.name ] }, :second, :first, { prompt: "班级名称" }, placeholder: "班级名称", class: "form-select", oninput: "this.form.requestSubmit()" %>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary w-100" data-action="filters#reset">清除筛选</button>
           </div>
         </div>
 
         <%= f.submit "搜索", class: "btn btn-primary w-100 mb-2 d-none" %>
-
-        <div class="d-flex justify-content-center mb-2">
-          <div class="col-4">
-            <button type="button" class="btn btn-primary text-white w-100" data-action="filters#reset">清除筛选</button>
-          </div>
-        </div>
 
       <% end %>
 
@@ -31,6 +28,7 @@
               <th scope="col">姓名</th>
               <th scope="col">性别</th>
               <th scope="col">课数</th>
+              <th scope="col">班级</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
@@ -45,6 +43,13 @@
                   <% end %>
                 </td>
                 <td scope="row"><%= student.paid_lessons %></td>
+                <td scope="row">
+                  <div class="group-badges d-flex flex-column justify-content-center align-items-center">
+                    <% student.groups.each do |group| %>
+                      <span class="badge rounded-pill text-bg-light"><%= group.name %></span>
+                    <% end %>
+                  </div>
+                </td>
               </tr>
             <% end %>
           </tbody>

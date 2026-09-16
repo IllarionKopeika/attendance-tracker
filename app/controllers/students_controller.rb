@@ -5,10 +5,6 @@ class StudentsController < ApplicationController
   @q = Student.ransack(permitted_student_params(params))
   @q.sorts = "updated_at desc" if @q.sorts.empty?
   @students = @q.result.includes(:groups, :student_groups)
-
-  respond_to do |format|
-    format.html
-  end
  end
 
   def new

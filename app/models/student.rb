@@ -8,7 +8,7 @@ class Student < ApplicationRecord
   validates :groups, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "name" ]
+    [ "name", "updated_at" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
