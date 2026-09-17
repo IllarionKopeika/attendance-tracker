@@ -10,14 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_14_101506) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_17_112836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.boolean "attended"
+    t.bigint "student_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_attendances_on_lesson_id"
+    t.index ["student_id", "lesson_id"], name: "index_attendances_on_student_id_and_lesson_id", unique: true
+    t.index ["student_id"], name: "index_attendances_on_student_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "topic"
+    t.datetime "given_at"
+    t.bigint "group_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["group_id"], name: "index_lessons_on_group_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -56,6 +84,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_14_101506) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "attendances", "lessons"
+  add_foreign_key "attendances", "students"
+  add_foreign_key "lessons", "courses"
+  add_foreign_key "lessons", "groups"
   add_foreign_key "sessions", "users"
   add_foreign_key "student_groups", "groups"
   add_foreign_key "student_groups", "students"

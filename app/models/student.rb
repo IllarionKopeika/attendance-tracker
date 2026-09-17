@@ -2,6 +2,9 @@ class Student < ApplicationRecord
   has_many :student_groups, dependent: :destroy
   has_many :groups, through: :student_groups
 
+  has_many :attendances, dependent: :destroy
+  has_many :lessons, through: :attendances
+
   enum :sex, { male: 0, female: 1 }
 
   validates :name, :sex, presence: true

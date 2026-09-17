@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: MyString
+  given_at: 2026-09-17 19:26:24
+  group: one
+  course: one
+
+two:
+  topic: MyString
+  given_at: 2026-09-17 19:26:24
+  group: two
+  course: two
