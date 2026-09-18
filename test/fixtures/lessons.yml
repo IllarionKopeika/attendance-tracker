@@ -2,12 +2,10 @@
 
 one:
   topic: MyString
-  given_at: 2026-09-17 19:26:24
-  group: one
+  given_at: 2026-09-18
   course: one
 
 two:
   topic: MyString
-  given_at: 2026-09-17 19:26:24
-  group: two
+  given_at: 2026-09-18
   course: two

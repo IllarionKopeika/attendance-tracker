@@ -7,8 +7,7 @@ class Student < ApplicationRecord
 
   enum :sex, { male: 0, female: 1 }
 
-  validates :name, :sex, presence: true
-  validates :groups, presence: true
+  validates :name, :sex, :groups, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     [ "name", "updated_at" ]

@@ -4,7 +4,15 @@
 
       <h1 class="text-center text-primary mb-3">仪表盘</h1>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-2">
+        <div class="col p-1 db-card me-2">
+          <h4 class="text-center">班级</h4>
+          <ul>
+            <li><%= link_to "新班级", new_group_path %></li>
+            <li><%= link_to "班级列表", groups_path %></li>
+          </ul>
+        </div>
+
         <div class="col p-1 db-card">
           <h4 class="text-center">学生</h4>
           <ul>
@@ -12,12 +20,13 @@
             <li><%= link_to "学生列表", students_path %></li>
           </ul>
         </div>
+      </div>
 
-        <div class="col p-1 db-card ms-1">
-          <h4 class="text-center">班级</h4>
+      <div class="row justify-content-center">
+        <div class="col p-1 db-card">
+          <h4 class="text-center">课程</h4>
           <ul>
-            <li><%= link_to "新班级", new_group_path %></li>
-            <li><%= link_to "班级列表", groups_path %></li>
+            <li><%= link_to "新课程", new_course_path %></li>
           </ul>
         </div>
       </div>

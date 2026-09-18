@@ -6,28 +6,55 @@ en:
     format: "%{message}"
   activerecord:
     models:
-      student: 学生
+      attendance: 上座率
+      course: 课程
       group: 班级
+      lesson: 课
+      student: 学生
+      user: 用户
     attributes:
+      attendance:
+        attended: 上课
+        students: 学生
+        lessons: 课
+      course:
+        name: 名称
+        group: 班级
+        lessons_count: 课数
+      group:
+        name: 名称
+      lesson:
+        topic: 课题
+        given_at: 日期
+        group: 班级
+        course: 课程
       student:
         name: 姓名
         sex: 性别
         paid_lessons: 课数
         groups: 班级
-      group:
-        name: 名称
     errors:
       models:
-        student:
+        course:
           attributes:
             name:
-              blank: "没填新生的%{attribute}"
-            sex:
-              blank: "没选新生的%{attribute}"
-            groups:
-              blank: "至少选一个%{attribute}"
+              blank: "没填课程%{attribute}"
+            group:
+              required: "没选%{attribute}"
+            lessons_count:
+              blank: "没填课程%{attribute}"
+              not_a_number: "%{attribute}必须是数字"
+              greater_than: "%{attribute}必须大于零"
         group:
           attributes:
             name:
               blank: "没填班级%{attribute}"
               taken: "该班级%{attribute}已存在"
+        student:
+          attributes:
+            name:
+              blank: "没填新生%{attribute}"
+            sex:
+              blank: "没选新生%{attribute}"
+            groups:
+              blank: "至少选一个%{attribute}"
