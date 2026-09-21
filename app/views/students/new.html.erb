@@ -12,11 +12,7 @@
         </div>
 
         <div class="mb-2">
-          <%= f.select :sex, [ [ "男", "male" ], [ "女", "female" ] ], { prompt: "性别" }, class: "form-select" %>
-        </div>
-
-        <div class="mb-2">
-          <%= f.number_field :paid_lessons, in: 1..999999, step: 1, placeholder: "课数", class: "form-control" %>
+          <%= f.number_field :paid_lessons, placeholder: "已购买的课数", class: "form-control" %>
         </div>
 
         <div class="mb-2">
@@ -33,6 +29,8 @@
 
         <%= f.submit "提交", class: "btn btn-primary w-100 mb-2" %>
       <% end %>
+
+      <%= link_to "学生列表", students_path, class: "btn btn-outline-primary w-100 mb-2" %>
 
     </div>
   </div>

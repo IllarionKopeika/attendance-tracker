@@ -5,9 +5,8 @@ class Student < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :lessons, through: :attendances
 
-  enum :sex, { male: 0, female: 1 }
-
-  validates :name, :sex, :groups, presence: true
+  validates :name, :groups, presence: true
+  validates :paid_lessons, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   def self.ransackable_attributes(auth_object = nil)
     [ "name", "updated_at" ]

@@ -1,4 +1,12 @@
 class CoursesController < ApplicationController
+  def index
+    @courses = Course.includes(:lessons)
+  end
+
+  def show
+    @course = Course.find(params[:id])
+    @lessons = @course.lessons.order(given_at: :asc)
+  end
   def new
     @course = Course.new
   end
@@ -10,7 +18,7 @@ class CoursesController < ApplicationController
         @course.lessons_count.to_i.times { @course.lessons.create! }
       end
       flash[:success] = "成功"
-      redirect_to root_path
+      redirect_to @course
     else
       render "new", status: :unprocessable_entity
     end

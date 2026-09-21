@@ -24,9 +24,8 @@
       <%= turbo_frame_tag "results", data: { turbo_action: "advance" } do %>
         <table class="table table-secondary table-striped text-center custom-table">
           <thead>
-            <tr>
+            <tr class="table-dark">
               <th scope="col">姓名</th>
-              <th scope="col">性别</th>
               <th scope="col">课数</th>
               <th scope="col">班级</th>
             </tr>
@@ -35,13 +34,6 @@
             <% @students.each do |student| %>
               <tr>
                 <td scope="row"><%= student.name %></td>
-                <td scope="row">
-                  <% if student.male? %>
-                    <span class="badge rounded-pill text-bg-dark"><%= t("sexes.#{student.sex}") %></span>
-                  <% else %>
-                    <span class="badge rounded-pill text-bg-secondary text-white"><%= t("sexes.#{student.sex}") %></span>
-                  <% end %>
-                </td>
                 <td scope="row"><%= student.paid_lessons %></td>
                 <td scope="row">
                   <div class="group-badges d-flex flex-column justify-content-center align-items-center">
@@ -57,6 +49,8 @@
 
         <h6 class="text-center">找到了<strong><%= @students.size %></strong>个学生</h6>
       <% end %>
+
+      <%= link_to "新生", new_student_path, class: "btn btn-outline-primary w-100 mb-2" %>
 
     </div>
   </div>

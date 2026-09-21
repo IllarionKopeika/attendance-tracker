@@ -20,4 +20,7 @@ Rails.application.routes.draw do
 
   # courses
   resources :courses, only: [ :index, :show, :new, :create ]
+
+  # lessons
+  resources :lessons, only: [ :edit, :update ]
 end

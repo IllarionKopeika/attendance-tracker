@@ -40,8 +40,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_18_005850) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "topic"
-    t.date "given_at"
+    t.integer "teaching_method"
+    t.datetime "given_at"
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,7 +69,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_18_005850) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
-    t.integer "sex"
     t.integer "paid_lessons"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center text-primary mb-2">出勤率</h1>
+
+      <%= render "shared/errors", object: @lesson %>
+
+      <%= form_with model: @lesson do |f| %>
+        <div class="mb-2">
+          <%= f.select :teaching_method, [ [ "外教", "foreign_teacher" ], [ "中教", "chinese_teacher" ] ], { prompt: "教师" }, class: "form-select" %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.date_field :given_at, placeholder: "上课日期", class: "form-control", data: { controller: "calendar" } %>
+        </div>
+
+        <%= f.submit "提交", class: "btn btn-primary w-100 mb-2" %>
+      <% end %>
+
+      <%= link_to "返回", :back, class: "btn btn-outline-primary w-100 mb-2" %>
+    </div>
+  </div>
+</div>

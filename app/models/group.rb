@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   has_many :students, through: :student_groups
 
   has_many :courses, dependent: :destroy
-
   has_many :lessons, through: :courses
 
   validates :name, presence: true, uniqueness: true

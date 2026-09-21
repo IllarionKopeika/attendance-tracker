@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center text-primary"><%= @course.name %></h1>
+      <h4 class="text-center text-dark mb-3"><%= @course.group.name %></h4>
+
+      <table class="table table-secondary table-striped text-center custom-table">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">序号</th>
+            <th scope="col">教师</th>
+            <th scope="col">上课日期</th>
+            <th scope="col">出勤率</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @lessons.each_with_index do |lesson, index| %>
+            <tr>
+              <td scope="row"><%= index + 1 %></td>
+              <td scope="row"><%= format_teaching_method(lesson.teaching_method) %></td>
+              <td scope="row"><%= format_date(lesson.given_at) %></td>
+              <td scope="row">
+                <%= link_to edit_lesson_path(lesson.id), class: "d-inline-flex align-items-center" do %>
+                  <i class="fa-solid fa-user-pen"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

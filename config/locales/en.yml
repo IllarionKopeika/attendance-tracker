@@ -1,12 +1,12 @@
 en:
-  sexes:
-    male: 男
-    female: 女
+  teaching_methods:
+    foreign_teacher: 外教
+    chinese_teacher: 中教
   errors:
     format: "%{message}"
   activerecord:
     models:
-      attendance: 上座率
+      attendance: 出勤率
       course: 课程
       group: 班级
       lesson: 课
@@ -24,14 +24,13 @@ en:
       group:
         name: 名称
       lesson:
-        topic: 课题
-        given_at: 日期
+        teaching_method: 教师
+        given_at: 上课日期
         group: 班级
         course: 课程
       student:
         name: 姓名
-        sex: 性别
-        paid_lessons: 课数
+        paid_lessons: 已购买的课数
         groups: 班级
     errors:
       models:
@@ -50,11 +49,19 @@ en:
             name:
               blank: "没填班级%{attribute}"
               taken: "该班级%{attribute}已存在"
+        lesson:
+          attributes:
+            teaching_method:
+              blank: "没选%{attribute}"
+            given_at:
+              blank: "没选%{attribute}"
         student:
           attributes:
             name:
               blank: "没填新生%{attribute}"
-            sex:
-              blank: "没选新生%{attribute}"
+            paid_lessons:
+              blank: "没填%{attribute}"
+              not_a_number: "%{attribute}必须是数字"
+              greater_than: "%{attribute}必须大于零"
             groups:
               blank: "至少选一个%{attribute}"

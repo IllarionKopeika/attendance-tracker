@@ -9,22 +9,16 @@
         <div class="modal-body">
           <table class="table table-secondary table-striped text-center custom-table">
             <thead>
-              <tr>
+              <tr class="table-dark">
                 <th scope="col">姓名</th>
-                <th scope="col">性别</th>
+                <th scope="col">已购买的课数</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
               <% group.students.each do |student| %>
                 <tr>
                   <td scope="row"><%= student.name %></td>
-                  <td scope="row">
-                    <% if student.male? %>
-                      <span class="badge rounded-pill text-bg-dark"><%= t("sexes.#{student.sex}") %></span>
-                    <% else %>
-                      <span class="badge rounded-pill text-bg-secondary text-white"><%= t("sexes.#{student.sex}") %></span>
-                    <% end %>
-                  </td>
+                  <td scope="row"><%= student.paid_lessons %></td>
                 </tr>
               <% end %>
             </tbody>

@@ -6,7 +6,7 @@
 
       <table class="table table-secondary table-striped text-center custom-table">
         <thead>
-          <tr>
+          <tr class="table-dark">
             <th scope="col">名称</th>
             <th scope="col">人数</th>
           </tr>
@@ -24,6 +24,8 @@
           <% end %>
         </tbody>
       </table>
+
+      <%= link_to "新班级", new_group_path, class: "btn btn-outline-primary w-100 mb-2" %>
 
     </div>
   </div>
