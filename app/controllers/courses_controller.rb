@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @lessons = @course.lessons.order(given_at: :asc)
+    @lessons = @course.lessons.order(given_at: :asc).includes(:attendances)
   end
   def new
     @course = Course.new

@@ -11,8 +11,22 @@
           <%= f.select :teaching_method, [ [ "外教", "foreign_teacher" ], [ "中教", "chinese_teacher" ] ], { prompt: "教师" }, class: "form-select" %>
         </div>
 
-        <div class="mb-2">
+        <div class="mb-3">
           <%= f.date_field :given_at, placeholder: "上课日期", class: "form-control", data: { controller: "calendar" } %>
+        </div>
+
+        <div class="mb-3">
+          <div class="attendance-grid">
+            <%= f.fields_for :attendances, @lesson.attendances.includes(:student).order("students.name") do |a| %>
+              <div class="d-flex justify-content-evenly align-items-center">
+                <p class="mb-0"><%= a.object.student.name %></p>
+                <div class="form-check form-switch mb-0">
+                  <%= a.hidden_field :id %>
+                  <%= a.check_box :attended, class: "form-check-input" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
 
         <%= f.submit "提交", class: "btn btn-primary w-100 mb-2" %>

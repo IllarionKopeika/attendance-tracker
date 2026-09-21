@@ -66,6 +66,15 @@
     font-size: 16px;
     font-weight: 500;
   }
+  .attendance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    p {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
   .eye-icon {
     color: $secondary;
     cursor: pointer;
